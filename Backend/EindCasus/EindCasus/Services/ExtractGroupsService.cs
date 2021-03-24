@@ -12,5 +12,21 @@ namespace EindCasus.Services
         {
             return input.Split("\n");
         }
+
+        public string ValidateLength(string[] input)
+        {
+            if(input.Length > 4)
+            {
+                return "Incorrect formaat: geen witte regel tussen instanties";
+            }
+            else if(input.Length < 4)
+            {
+                return "Incorrect formaat: niet alle velden zijn ingevuld";
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }

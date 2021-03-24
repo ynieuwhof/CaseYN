@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 namespace EindCasus.Interfaces
 {
-    public interface IExtractDatum
+    public interface IExtractCode
     {
-        DateTime Parse(string[] groepjes);
+        string Parse(string[] groepjes);
 
-        string ValidateDatum(string[] groepjes);
+        string ValidateCode(string[] groepjes);
     }
 }

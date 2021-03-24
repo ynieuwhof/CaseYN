@@ -11,7 +11,8 @@ import { PlanningImporterenComponent } from './components/planning-importeren/pl
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'cursus-overzicht', component: CursusOverzichtComponent}
+  {path: 'cursus-overzicht', component: CursusOverzichtComponent},
+  {path: 'cursus-toevoegen', component: PlanningImporterenComponent}
 ]
 
 @NgModule({

@@ -10,5 +10,9 @@ namespace EindCasus.Services
         public int ToegevoegdeCursussen { get; set; }
 
         public int ToegevoegdeInstanties { get; set; }
+
+        public int AantalDuplicaten { get; set; }
+
+        public List<string> ErrorMessage { get; set; }
     }
 }

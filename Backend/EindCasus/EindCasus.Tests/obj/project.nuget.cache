@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Lzu0ial8TG0lZMKldUpuegLZY7eU2QhUBCpzAU9K8HrxahHqkMQ6oifiAqPgCXYn7LQXkw16+UqnwY9ct11j9w==",
+  "dgSpecHash": "kZ4+FQhqVAk3hH5MXhNYHq4GiCCOEry0NYh9Q1HYFLm4nXJInjhAvFfXfDeT81JgSRLApMmDq8zgxpE5ZQfwCQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\yolan\\source\\repos\\CursusAdministratie\\Backend\\EindCasus\\EindCasus.Tests\\EindCasus.Tests.csproj",
+  "projectFilePath": "C:\\Users\\yolan\\source\\repos\\EndCase\\Backend\\EindCasus\\EindCasus.Tests\\EindCasus.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\yolan\\.nuget\\packages\\castle.core\\4.4.0\\castle.core.4.4.0.nupkg.sha512",
     "C:\\Users\\yolan\\.nuget\\packages\\coverlet.collector\\1.3.0\\coverlet.collector.1.3.0.nupkg.sha512",

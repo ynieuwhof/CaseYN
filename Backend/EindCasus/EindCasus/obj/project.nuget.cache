@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4KzH7YhIRUc/E7d1BQ8PK6W1JvvKuAWEZS1HMGJ89ZKd0Js8I0HQiItnFbMWAWwSrGUI6dtVOiwYWMsuGKRl7w==",
+  "dgSpecHash": "PxXuBWq2ZSfC48NWkYQ0DY7ku0PsLEsCiZIeV4q/zpW8O+HGxtJwyZ1hX+GHVE4306cHJBLh1cir6534WdJNjA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\yolan\\source\\repos\\CursusAdministratie\\Backend\\EindCasus\\EindCasus\\EindCasus.csproj",
+  "projectFilePath": "C:\\Users\\yolan\\source\\repos\\EndCase\\Backend\\EindCasus\\EindCasus\\EindCasus.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\yolan\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\yolan\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

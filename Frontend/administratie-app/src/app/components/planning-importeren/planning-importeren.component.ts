@@ -17,8 +17,10 @@ export class PlanningImporterenComponent implements OnInit {
 
   aantalCursussen: number;
   aantalInstanties: number;
+  aantalDuplicaten: number;
   showMessage = false;
-
+  showDuplicateMessage = false;
+  errorMessage: any;
 
   result: any;
 
@@ -28,12 +30,19 @@ export class PlanningImporterenComponent implements OnInit {
       this.result = fileReader.result.toString().split("\n\n");
       this.result.pop();
       console.log(this.result);
+      
       this.httpClient.post("https://localhost:44371/api/import", this.result).subscribe((response) => {
         console.log(response);
         this.aantalCursussen = response["toegevoegdeCursussen"];
         this.aantalInstanties = response["toegevoegdeInstanties"];
+        this.aantalDuplicaten = response["aantalDuplicaten"];
+        this.errorMessage = response["errorMessage"][0];
+        if (this.aantalDuplicaten > 0)
+        {
+          this.showDuplicateMessage = true;
+        }
         this.showMessage = true;
-      })
+      }) 
     }
     fileReader.readAsText(this.file);;
   }

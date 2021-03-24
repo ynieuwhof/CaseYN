@@ -40,6 +40,9 @@ namespace EindCasus
             services.AddScoped<IExtractGroupsService, ExtractGroupsService>();
             services.AddScoped<ICursusImporterService, CursusImporterService>();
             services.AddScoped<IExtractDatum, ExtractDatum>();
+            services.AddScoped<IExtractTitel, ExtractTitel>();
+            services.AddScoped<IExtractCode, ExtractCode>();
+            services.AddScoped<IExtractDuur, ExtractDuur>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

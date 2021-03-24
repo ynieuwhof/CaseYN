@@ -17,10 +17,9 @@ namespace EindCasus.Repositories
             this._context = context;
         }
 
-        public void AddNewCourse(char duurString, string titel, string code)
+        public void AddNewCourse(int duur, string titel, string code)
         {
-            int duurInt = int.Parse(duurString.ToString());
-            _context.Cursussen.Add(new Cursus { Duur = duurInt, Titel = titel, Code = code });
+            _context.Cursussen.Add(new Cursus { Duur = duur, Titel = titel, Code = code });
             _context.SaveChanges();
         }
 

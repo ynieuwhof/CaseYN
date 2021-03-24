@@ -7,7 +7,7 @@ namespace EindCasus.Interfaces
 {
     public interface IImportCursusRepository
     {
-        void AddNewCourse(char duurString, string titel, string code);
+        void AddNewCourse(int duur, string titel, string code);
 
         void AddCourseInstance(DateTime startDatum, int cursusId);
     }

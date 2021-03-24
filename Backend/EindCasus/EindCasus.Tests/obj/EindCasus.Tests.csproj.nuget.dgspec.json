@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\yolan\\source\\repos\\CursusAdministratie\\Backend\\EindCasus\\EindCasus.Tests\\EindCasus.Tests.csproj": {}
+    "C:\\Users\\yolan\\source\\repos\\EndCase\\Backend\\EindCasus\\EindCasus.Tests\\EindCasus.Tests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\yolan\\source\\repos\\CursusAdministratie\\Backend\\EindCasus\\EindCasus.Tests\\EindCasus.Tests.csproj": {
+    "C:\\Users\\yolan\\source\\repos\\EndCase\\Backend\\EindCasus\\EindCasus.Tests\\EindCasus.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yolan\\source\\repos\\CursusAdministratie\\Backend\\EindCasus\\EindCasus.Tests\\EindCasus.Tests.csproj",
+        "projectUniqueName": "C:\\Users\\yolan\\source\\repos\\EndCase\\Backend\\EindCasus\\EindCasus.Tests\\EindCasus.Tests.csproj",
         "projectName": "EindCasus.Tests",
-        "projectPath": "C:\\Users\\yolan\\source\\repos\\CursusAdministratie\\Backend\\EindCasus\\EindCasus.Tests\\EindCasus.Tests.csproj",
+        "projectPath": "C:\\Users\\yolan\\source\\repos\\EndCase\\Backend\\EindCasus\\EindCasus.Tests\\EindCasus.Tests.csproj",
         "packagesPath": "C:\\Users\\yolan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yolan\\source\\repos\\CursusAdministratie\\Backend\\EindCasus\\EindCasus.Tests\\obj\\",
+        "outputPath": "C:\\Users\\yolan\\source\\repos\\EndCase\\Backend\\EindCasus\\EindCasus.Tests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\yolan\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -29,8 +29,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\yolan\\source\\repos\\CursusAdministratie\\Backend\\EindCasus\\EindCasus\\EindCasus.csproj": {
-                "projectPath": "C:\\Users\\yolan\\source\\repos\\CursusAdministratie\\Backend\\EindCasus\\EindCasus\\EindCasus.csproj"
+              "C:\\Users\\yolan\\source\\repos\\EndCase\\Backend\\EindCasus\\EindCasus\\EindCasus.csproj": {
+                "projectPath": "C:\\Users\\yolan\\source\\repos\\EndCase\\Backend\\EindCasus\\EindCasus\\EindCasus.csproj"
               }
             }
           }
@@ -85,14 +85,14 @@
         }
       }
     },
-    "C:\\Users\\yolan\\source\\repos\\CursusAdministratie\\Backend\\EindCasus\\EindCasus\\EindCasus.csproj": {
+    "C:\\Users\\yolan\\source\\repos\\EndCase\\Backend\\EindCasus\\EindCasus\\EindCasus.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yolan\\source\\repos\\CursusAdministratie\\Backend\\EindCasus\\EindCasus\\EindCasus.csproj",
+        "projectUniqueName": "C:\\Users\\yolan\\source\\repos\\EndCase\\Backend\\EindCasus\\EindCasus\\EindCasus.csproj",
         "projectName": "EindCasus",
-        "projectPath": "C:\\Users\\yolan\\source\\repos\\CursusAdministratie\\Backend\\EindCasus\\EindCasus\\EindCasus.csproj",
+        "projectPath": "C:\\Users\\yolan\\source\\repos\\EndCase\\Backend\\EindCasus\\EindCasus\\EindCasus.csproj",
         "packagesPath": "C:\\Users\\yolan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yolan\\source\\repos\\CursusAdministratie\\Backend\\EindCasus\\EindCasus\\obj\\",
+        "outputPath": "C:\\Users\\yolan\\source\\repos\\EndCase\\Backend\\EindCasus\\EindCasus\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\yolan\\AppData\\Roaming\\NuGet\\NuGet.Config",

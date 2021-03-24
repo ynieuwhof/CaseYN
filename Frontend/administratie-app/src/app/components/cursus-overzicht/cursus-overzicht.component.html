@@ -1,0 +1,30 @@
+
+<div class="flex">
+    <div class="tabel">
+        <h1>Cursus Overzicht</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Startdatum</th>
+                    <th>Duur</th>
+                    <th>Titel</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor='let cursus of cursussen'>
+                    <td>{{cursus.startDatum | date: 'dd/MM/yyyy'}}</td>
+                    <td>{{cursus.duur}} dagen</td>
+                    <td>{{cursus.titel}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    
+    <div class="formulier">
+        <planning-importeren></planning-importeren>
+    </div>
+</div>
+
+
+

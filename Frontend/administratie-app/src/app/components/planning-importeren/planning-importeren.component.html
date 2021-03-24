@@ -1,0 +1,9 @@
+<form (ngSubmit)="handleFileUpload()">
+    <h1>Planning importeren</h1>
+    <br>
+    <input id="input-file" type="file" (change) = "fileChanged($event)"/>
+    <br>
+    <input type="submit"/>
+</form>
+
+<p *ngIf="showMessage">Er zijn {{aantalCursussen}} nieuwe cursussen en {{aantalInstanties}} cursusinstanties toegevoegd</p>

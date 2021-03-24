@@ -1,0 +1,19 @@
+.flex{
+    display: flex;
+}
+
+div {
+    justify-content: space-around;
+    padding: 1%;
+    margin-right: 1%;
+    border-radius: 1%;
+}
+
+.tabel, .formulier {
+    background-color: lightgreen;
+}
+
+td, th {
+    padding-right: 5px;
+    padding-left: 5px;
+}

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using EindCasus.Interfaces;
@@ -8,22 +9,21 @@ namespace EindCasus.Services.ExtractValueServices
 {
     public class ExtractCode : IExtractCode
     {
-        public string Parse(string[] groepjes)
-        {
-            return groepjes[1][12..];
-        }
 
-        public string ValidateCode(string[] groepjes)
+        public string ValidateCode(string codeRegel)
         {
-            string codeRegel = groepjes[1].Substring(0, 12);
-
-            if (!codeRegel.Equals("Cursuscode: "))
+            if(codeRegel.Length < 13)
             {
-                return "Incorrect formaat: Controleer of de gegevens van de instanties in deze volgorde staan: [Titel - Cursuscode - Duur - Startdatum]";
+                throw new ValidationException("Cursuscode ontbreekt");
+            }
+            else if (!codeRegel.Substring(0,12).Equals("Cursuscode: "))
+            {
+                throw new ValidationException("Cursuscode ontbreekt");
+
             }
             else
             {
-                return null;
+                return codeRegel[12..];
             }
         }
     }

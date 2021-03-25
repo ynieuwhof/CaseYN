@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using EindCasus.Interfaces;
@@ -8,22 +9,25 @@ namespace EindCasus.Services.ExtractValueServices
 {
     public class ExtractDuur : IExtractDuur
     {
-        public int Parse(string[] groepjes)
-        {
-            return int.Parse(groepjes[2][6].ToString());
-        }
 
-        public string ValidateDuur(string[] groepjes)
+        public int ValidateDuur(string duurRegel)
         {
-            string duurRegel = groepjes[2].Substring(0, 6);
 
-            if (!duurRegel.Equals("Duur: "))
+            if (duurRegel.Length < 6)
             {
-                return "Incorrect formaat: Controleer of de gegevens van de instanties in deze volgorde staan: [Titel - Cursuscode - Duur - Startdatum]";
+                throw new ValidationException("Duur ontbreekt");
+            }
+            else if (!duurRegel.Substring(0, 6).Equals("Duur: "))
+            {
+                throw new ValidationException("Duur ontbreekt");
+            }
+            else if (!duurRegel[7..].Equals(" dagen"))
+            {
+                throw new ValidationException("Zet de duur op de volgende manier neer [Duur: {getal} dagen]");
             }
             else
             {
-                return null;
+                return int.Parse(duurRegel[6].ToString()); ;
             }
         }
     }

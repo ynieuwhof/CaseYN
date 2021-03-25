@@ -7,8 +7,6 @@ namespace EindCasus.Interfaces
 {
     public interface IExtractDatum
     {
-        DateTime Parse(string[] groepjes);
-
-        string ValidateDatum(string[] groepjes);
+        DateTime ValidateDatum(string datumRegel);
     }
 }

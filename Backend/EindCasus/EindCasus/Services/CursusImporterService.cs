@@ -4,97 +4,99 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EindCasus.Interfaces;
+using System.ComponentModel.DataAnnotations;
 
 namespace EindCasus.Services
 {
     public class CursusImporterService : ICursusImporterService
     {
-        private IExtractGroupsService extractGroupsService;
-        private ICursusRepository cursusRepository;
-        private IImportCursusRepository importCursusRepository;
-        private IExtractDatum extractDatum;
-        private IExtractDuur extractDuur;
-        private IExtractTitel extractTitel;
-        private IExtractCode extractCode;
+        private readonly ICursusRepository cursusRepository;
+        private readonly IImportCursusRepository importCursusRepository;
+        private readonly IExtractDatum extractDatum;
+        private readonly IExtractDuur extractDuur;
+        private readonly IExtractTitel extractTitel;
+        private readonly IExtractCode extractCode;
+        private readonly IEmptyLineValidator emptyLineValidator;
 
         public CursusImporterService(
-            IExtractGroupsService extractGroupsService,
             IImportCursusRepository importCursusRepository,
             ICursusRepository cursusRepository,
             IExtractDatum extractDatum,
             IExtractTitel extractTitel,
             IExtractCode extractCode,
-            IExtractDuur extractDuur)
+            IExtractDuur extractDuur,
+            IEmptyLineValidator emptyLineValidator)
         {
-            this.extractGroupsService = extractGroupsService;
             this.importCursusRepository = importCursusRepository;
             this.cursusRepository = cursusRepository;
             this.extractDatum = extractDatum;
             this.extractTitel = extractTitel;
             this.extractCode = extractCode;
             this.extractDuur = extractDuur;
+            this.emptyLineValidator = emptyLineValidator;
         }
 
-        public ImportDetails AddCourse(IEnumerable<string> cursussen)
+        public ImportDetails AddCourse(string cursussen)
         {
             int aantalCursussen = 0;
             int aantalInstanties = 0;
             int aantalDuplicaten = 0;
-            
-            List<string> errorMessage = new();
+            string errorMessage = ""; 
 
-            foreach(string cursus in cursussen)
+            string[] alleRegels = cursussen.Split("\n");
+            int huidigeRegel = 0;
+
+            try
             {
-                string[] groepjes = extractGroupsService.ExtractGroups(cursus);
-                errorMessage.Add(extractGroupsService.ValidateLength(groepjes));
-                errorMessage.RemoveAll(x => x == null);
 
-                if(errorMessage.Count == 0)
-                {                                  
-                    errorMessage.Add(extractTitel.ValidateTitel(groepjes));
-                    errorMessage.Add(extractCode.ValidateCode(groepjes));
-                    errorMessage.Add(extractDuur.ValidateDuur(groepjes));
-                    errorMessage.Add(extractDatum.ValidateDatum(groepjes));
+                while (huidigeRegel < alleRegels.Length -1)
+                {
+                    string titel = extractTitel.ValidateTitel(alleRegels[huidigeRegel]);
+                    huidigeRegel++;
+                    string code = extractCode.ValidateCode(alleRegels[huidigeRegel]);
+                    huidigeRegel++;
+                    int duur = extractDuur.ValidateDuur(alleRegels[huidigeRegel]);
+                    huidigeRegel++;
+                    DateTime date = extractDatum.ValidateDatum(alleRegels[huidigeRegel]);
+                    huidigeRegel++;
+                    string legeRegel = emptyLineValidator.CheckForEmptyLine(alleRegels[huidigeRegel]);
+                    huidigeRegel++;
 
-                    errorMessage.RemoveAll(x => x == null);
 
-                    if (errorMessage.Count == 0)
+                    bool cursusExists = cursusRepository.CheckIfCourseExists(code);
+                    int cursusId;
+                    bool instanceExists;
+
+                    if (!cursusExists)
                     {
-                        string titel = extractTitel.Parse(groepjes);
-                        string code = extractCode.Parse(groepjes);
-                        int duur = extractDuur.Parse(groepjes);
-                        DateTime date = extractDatum.Parse(groepjes);
-
-                        bool cursusExists = cursusRepository.CheckIfCourseExists(code);
-                        int cursusId;
-                        bool instanceExists;
-
-                        if (!cursusExists)
+                        importCursusRepository.AddNewCourse(duur, titel, code);
+                        aantalCursussen++;
+                        cursusId = cursusRepository.GetCourseIdByCode(code);
+                        importCursusRepository.AddCourseInstance(date, cursusId);
+                        aantalInstanties++;
+                    }
+                    else
+                    {
+                        cursusId = cursusRepository.GetCourseIdByCode(code);
+                        instanceExists = cursusRepository.CheckIfCourseInstanceExisits(date, cursusId);
+                        if (instanceExists)
                         {
-                            importCursusRepository.AddNewCourse(duur, titel, code);
-                            aantalCursussen++;
-                            cursusId = cursusRepository.GetCourseIdByCode(code);
-                            importCursusRepository.AddCourseInstance(date, cursusId);
-                            aantalInstanties++;
+                            aantalDuplicaten++;
                         }
                         else
                         {
-                            cursusId = cursusRepository.GetCourseIdByCode(code);
-                            instanceExists = cursusRepository.CheckIfCourseInstanceExisits(date, cursusId);
-                            if (instanceExists)
-                            {
-                                aantalDuplicaten++;
-                            }
-                            else
-                            {
-                                importCursusRepository.AddCourseInstance(date, cursusId);
-                                aantalInstanties++;
-                            }
+                            importCursusRepository.AddCourseInstance(date, cursusId);
+                            aantalInstanties++;
                         }
                     }
                     
-                }
+                }    
                 
+            }
+            catch(ValidationException e)
+            {
+                errorMessage = $"Incorrect formaat op regel {huidigeRegel + 1} : {e.Message}";
+                return new ImportDetails() { ToegevoegdeCursussen = aantalCursussen, ToegevoegdeInstanties = aantalInstanties, AantalDuplicaten = aantalDuplicaten, ErrorMessage = errorMessage };
             }
 
             return new ImportDetails(){ ToegevoegdeCursussen = aantalCursussen, ToegevoegdeInstanties = aantalInstanties, AantalDuplicaten = aantalDuplicaten, ErrorMessage = errorMessage};

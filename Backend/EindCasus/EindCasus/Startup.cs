@@ -37,12 +37,12 @@ namespace EindCasus
                 Configuration.GetConnectionString("CursusDbContext")));
             services.AddScoped<ICursusRepository, CursusRepository>();
             services.AddScoped<IImportCursusRepository, ImportCursusRepository>();
-            services.AddScoped<IExtractGroupsService, ExtractGroupsService>();
             services.AddScoped<ICursusImporterService, CursusImporterService>();
             services.AddScoped<IExtractDatum, ExtractDatum>();
             services.AddScoped<IExtractTitel, ExtractTitel>();
             services.AddScoped<IExtractCode, ExtractCode>();
             services.AddScoped<IExtractDuur, ExtractDuur>();
+            services.AddScoped<IEmptyLineValidator, EmptyLineValidator>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

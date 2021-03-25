@@ -10,7 +10,7 @@ namespace EindCasus.Repositories
 {
     public class ImportCursusRepository : IImportCursusRepository
     {
-        private CursusDbContext _context;
+        private readonly CursusDbContext _context;
 
         public ImportCursusRepository(CursusDbContext context)
         {

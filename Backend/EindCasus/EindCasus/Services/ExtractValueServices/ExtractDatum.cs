@@ -4,33 +4,35 @@ using System.Linq;
 using System.Threading.Tasks;
 using EindCasus.Interfaces;
 using System.Text.RegularExpressions;
+using System.Globalization;
+using System.ComponentModel.DataAnnotations;
 
 namespace EindCasus.Services.ExtractValueServices
 {
     public class ExtractDatum : IExtractDatum
     {
-        public DateTime Parse(string[] groepjes)
+
+        public DateTime ValidateDatum(string datumRegel)
         {
-            return Convert.ToDateTime(groepjes[3][12..]);
-        }
 
-        public string ValidateDatum(string[] groepjes)
-        {
-            string datumRegel = groepjes[3];
-
-            bool formaat = DateTime.TryParse(datumRegel[12..], out DateTime result);
-
-            if (!datumRegel.Substring(0,12).Equals("Startdatum: "))
+            if(datumRegel.Length < 14)
             {
-                return "Incorrect formaat: Controleer of de gegevens van de instanties in deze volgorde staan: [Titel - Cursuscode - Duur - Startdatum]";
-            } 
-            else if (formaat == false)
+                throw new ValidationException("Datum ontbreekt");
+            }
+            else if (!datumRegel.Substring(0,12).Equals("Startdatum: "))
             {
-                return "Incorrect formaat: Heeft u de startdatum in het goede formaat opgegeven? [Startdatum: dd/mm/jjjj]";
+                throw new ValidationException("Datum ontbreekt");
+            }
+
+            bool formaat = DateTime.TryParseExact(datumRegel[12..], new string[] { "dd/MM/yyyy", "d/MM/yyyy" }, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime result);
+            
+            if (formaat == false)
+            {
+                throw new ValidationException("Heeft u de startdatum in het goede formaat opgegeven? [Startdatum: dd/mm/jjjj]");
             }
             else
             {
-                return null;
+                return Convert.ToDateTime(datumRegel[12..]);
             }
         }
     }

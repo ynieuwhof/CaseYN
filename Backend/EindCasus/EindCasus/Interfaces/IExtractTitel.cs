@@ -7,8 +7,6 @@ namespace EindCasus.Interfaces
 {
     public interface IExtractTitel
     {
-        string Parse(string[] groepjes);
-
-        string ValidateTitel(string[] groepjes);
+        string ValidateTitel(string titelRegel);
     }
 }

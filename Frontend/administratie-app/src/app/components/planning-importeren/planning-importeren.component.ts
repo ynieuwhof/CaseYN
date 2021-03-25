@@ -20,23 +20,25 @@ export class PlanningImporterenComponent implements OnInit {
   aantalDuplicaten: number;
   showMessage = false;
   showDuplicateMessage = false;
-  errorMessage: any;
+  errorMessage: string;
 
   result: any;
+  resultArray: Array<string>;
 
   handleFileUpload(){
     let fileReader = new FileReader();
     fileReader.onload = (e) => {
-      this.result = fileReader.result.toString().split("\n\n");
-      this.result.pop();
+      this.result = fileReader.result.toString();
+      this.resultArray = [this.result];
+     // this.result.pop();
       console.log(this.result);
       
-      this.httpClient.post("https://localhost:44371/api/import", this.result).subscribe((response) => {
+      this.httpClient.post("https://localhost:44371/api/import", this.resultArray).subscribe((response) => {
         console.log(response);
         this.aantalCursussen = response["toegevoegdeCursussen"];
         this.aantalInstanties = response["toegevoegdeInstanties"];
         this.aantalDuplicaten = response["aantalDuplicaten"];
-        this.errorMessage = response["errorMessage"][0];
+        this.errorMessage = response["errorMessage"];
         if (this.aantalDuplicaten > 0)
         {
           this.showDuplicateMessage = true;

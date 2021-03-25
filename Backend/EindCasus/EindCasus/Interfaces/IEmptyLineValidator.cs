@@ -5,10 +5,8 @@ using System.Threading.Tasks;
 
 namespace EindCasus.Interfaces
 {
-    public interface IExtractGroupsService
+    public interface IEmptyLineValidator
     {
-        string[] ExtractGroups(string input);
-
-        string ValidateLength(string[] input);
+        string CheckForEmptyLine(string legeRegel);
     }
 }

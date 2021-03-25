@@ -7,8 +7,6 @@ namespace EindCasus.Interfaces
 {
     public interface IExtractDuur
     {
-        int Parse(string[] groepjes);
-
-        string ValidateDuur(string[] groepjes);
+        int ValidateDuur(string duurRegel);
     }
 }

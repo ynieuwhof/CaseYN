@@ -8,7 +8,7 @@ namespace EindCasus.Interfaces
 {
     public interface ICursusImporterService
     {
-        ImportDetails AddCourse(IEnumerable<string> cursussen);
+        ImportDetails AddCourse(string cursussen);
 
     }
 }

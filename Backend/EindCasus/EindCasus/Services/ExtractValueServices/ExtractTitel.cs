@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using EindCasus.Interfaces;
@@ -8,22 +9,20 @@ namespace EindCasus.Services.ExtractValueServices
 {
     public class ExtractTitel : IExtractTitel
     {
-        public string Parse(string[] groepjes)
-        {
-            return groepjes[0][7..];
-        }
 
-        public string ValidateTitel(string[] groepjes)
+        public string ValidateTitel(string titelRegel)
         {
-            string titelRegel = groepjes[0].Substring(0, 7);
-
-            if (!titelRegel.Equals("Titel: "))
+            if (titelRegel.Length < 7)
             {
-                return "Incorrect formaat: Controleer of de gegevens van de instanties in deze volgorde staan: [Titel - Cursuscode - Duur - Startdatum]";
+                throw new ValidationException("Titel ontbreekt");
+            }
+            if (!titelRegel.Substring(0,7).Equals("Titel: "))
+            {
+                throw new ValidationException("Titel ontbreekt");
             }
             else
             {
-                return null;
+                return titelRegel[7..];
             }
         }
     }

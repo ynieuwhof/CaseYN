@@ -13,6 +13,6 @@ namespace EindCasus.Services
 
         public int AantalDuplicaten { get; set; }
 
-        public List<string> ErrorMessage { get; set; }
+        public string ErrorMessage { get; set; }
     }
 }

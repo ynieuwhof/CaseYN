@@ -7,8 +7,6 @@ namespace EindCasus.Interfaces
 {
     public interface IExtractCode
     {
-        string Parse(string[] groepjes);
-
-        string ValidateCode(string[] groepjes);
+        string ValidateCode(string codeRegel);
     }
 }

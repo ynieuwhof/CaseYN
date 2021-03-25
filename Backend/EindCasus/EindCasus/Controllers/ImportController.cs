@@ -11,7 +11,7 @@ namespace EindCasus.Controllers
     [ApiController]
     public class ImportController : ControllerBase
     {
-        private ICursusImporterService cursusImporterService;
+        private readonly ICursusImporterService cursusImporterService;
 
         public ImportController(ICursusImporterService cursusImporterService)
         {
@@ -19,9 +19,10 @@ namespace EindCasus.Controllers
         }
 
         [HttpPost]
-        public ImportDetails ImportCursus(IEnumerable<string> cursussen)
+        public ImportDetails ImportCursus(string[] cursussen)
         {
-            return cursusImporterService.AddCourse(cursussen);
+            return cursusImporterService.AddCourse(cursussen[0]);
+            
         }
     }
 }

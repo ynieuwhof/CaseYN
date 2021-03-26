@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace EindCasus.DTO
 {
-    public class ImportDetails
+    public class ImportFeedback
     {
         public int ToegevoegdeCursussen { get; set; }
 

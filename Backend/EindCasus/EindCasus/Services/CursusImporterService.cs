@@ -37,7 +37,7 @@ namespace EindCasus.Services
             this.emptyLineValidator = emptyLineValidator;
         }
 
-        public ImportDetails AddCourse(string cursussen)
+        public ImportFeedback AddCourse(string cursussen)
         {
             int aantalCursussen = 0;
             int aantalInstanties = 0;
@@ -54,12 +54,16 @@ namespace EindCasus.Services
                 {
                     string titel = extractTitel.ValidateTitel(alleRegels[huidigeRegel]);
                     huidigeRegel++;
+
                     string code = extractCode.ValidateCode(alleRegels[huidigeRegel]);
                     huidigeRegel++;
+
                     int duur = extractDuur.ValidateDuur(alleRegels[huidigeRegel]);
                     huidigeRegel++;
+
                     DateTime date = extractDatum.ValidateDatum(alleRegels[huidigeRegel]);
                     huidigeRegel++;
+
                     string legeRegel = emptyLineValidator.CheckForEmptyLine(alleRegels[huidigeRegel]);
                     huidigeRegel++;
 
@@ -72,6 +76,7 @@ namespace EindCasus.Services
                     {
                         importCursusRepository.AddNewCourse(duur, titel, code);
                         aantalCursussen++;
+
                         cursusId = cursusRepository.GetCourseIdByCode(code);
                         importCursusRepository.AddCourseInstance(date, cursusId);
                         aantalInstanties++;
@@ -80,6 +85,7 @@ namespace EindCasus.Services
                     {
                         cursusId = cursusRepository.GetCourseIdByCode(code);
                         instanceExists = cursusRepository.CheckIfCourseInstanceExisits(date, cursusId);
+
                         if (instanceExists)
                         {
                             aantalDuplicaten++;
@@ -97,10 +103,10 @@ namespace EindCasus.Services
             catch(ValidationException e)
             {
                 errorMessage = $"Incorrect formaat op regel {huidigeRegel + 1} : {e.Message}";
-                return new ImportDetails() { ToegevoegdeCursussen = aantalCursussen, ToegevoegdeInstanties = aantalInstanties, AantalDuplicaten = aantalDuplicaten, ErrorMessage = errorMessage };
+                return new ImportFeedback() { ToegevoegdeCursussen = aantalCursussen, ToegevoegdeInstanties = aantalInstanties, AantalDuplicaten = aantalDuplicaten, ErrorMessage = errorMessage };
             }
 
-            return new ImportDetails(){ ToegevoegdeCursussen = aantalCursussen, ToegevoegdeInstanties = aantalInstanties, AantalDuplicaten = aantalDuplicaten, ErrorMessage = errorMessage};
+            return new ImportFeedback(){ ToegevoegdeCursussen = aantalCursussen, ToegevoegdeInstanties = aantalInstanties, AantalDuplicaten = aantalDuplicaten, ErrorMessage = errorMessage};
             
         }
     }

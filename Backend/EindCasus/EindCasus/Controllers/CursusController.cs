@@ -12,17 +12,17 @@ using EindCasus.DTO;
 namespace EindCasus.Controllers
 {
     [ApiController]
-    [Route("api/cursus")]
+    [Route("api/cursussen")]
     public class CursusController : ControllerBase
     {
-        private ICursusRepository cursusRepository;
+        private readonly ICursusRepository cursusRepository;
 
         public CursusController(ICursusRepository cursusRepository)
         {
             this.cursusRepository = cursusRepository;
         }
 
-        [HttpGet("alle")]
+        [HttpGet]
         public IEnumerable<CursusDetails> GetCourses()
         {
             return cursusRepository.GetAllCourses();

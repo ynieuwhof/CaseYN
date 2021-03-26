@@ -1,18 +1,25 @@
-<div class="importeren">
-    <h1>Planning importeren</h1>
-    <div class="formulier">
-        <form (ngSubmit)="handleFileUpload()">
-            <input id="input-file" type="file" (change) = "fileChanged($event)" required/>
-            <br>
-            <button type="submit" class="btn btn-primary">Upload</button>
-        </form>
-    </div>
+<div class="content">
 
-    <div class="messages">
-        <div *ngIf="showMessage" class="alert alert-success" role="alert">Er zijn {{aantalCursussen}} nieuwe cursussen en {{aantalInstanties}} cursusinstanties toegevoegd</div>
-        <div *ngIf="showDuplicateMessage" class="alert alert-danger" role=alert>Er zijn {{aantalDuplicaten}} duplicaten aangetroffen!</div>
-        <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
-            {{errorMessage}}
+    <h1>Planning importeren</h1>
+    <div class="blok">
+        <div class="formulier">
+            <form (ngSubmit)="handleFileUpload()">
+                <input id="input-file" type="file" (change) = "fileChanged($event)" required/>
+                <br>
+                <button type="submit" class="btn btn-primary">Upload</button>
+            </form>
+        </div>
+    
+        <div class="messages">
+            <div *ngIf="showMessage" class="alert alert-success" role="alert">
+                Er zijn {{aantalCursussen}} nieuwe cursussen en {{aantalInstanties}} cursusinstanties toegevoegd
+            </div>
+            <div *ngIf="showDuplicateMessage" class="alert alert-danger" role=alert>
+                Er zijn {{aantalDuplicaten}} duplicaten aangetroffen!
+            </div>
+            <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+                {{errorMessage}}
+            </div>
         </div>
     </div>
-</div>    
+</div>

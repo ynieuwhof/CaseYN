@@ -1,5 +1,4 @@
 import {CursusOverzichtComponent} from "./cursus-overzicht.component";
-import {Cursus} from '../../models/Cursus';
 import { TestBed } from "@angular/core/testing";
 import { HttpClientModule} from '@angular/common/http';
 

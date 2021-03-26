@@ -1,9 +1,7 @@
-﻿using EindCasus.Repositories;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using EindCasus.Interfaces;
-using EindCasus.Services;
 using EindCasus.DTO;
 
 namespace EindCasus.Controllers
@@ -20,10 +18,9 @@ namespace EindCasus.Controllers
         }
 
         [HttpPost]
-        public ImportDetails ImportCursus(string[] cursussen)
+        public ImportFeedback ImportCursus(string[] cursussen)
         {
             return cursusImporterService.AddCourse(cursussen[0]);
-            
         }
     }
 }

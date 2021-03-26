@@ -19,8 +19,8 @@ namespace EindCasus.Data
             }
 
             _context.Cursussen.Add(new Cursus{ Duur = 5, Titel = "C# Programmeren", Code = "CNETIN" });
-            _context.Cursussen.Add(new Cursus { Duur = 2, Titel = "Java Persistence API", Code = "JPA" });
-            _context.Cursussen.Add(new Cursus { Duur = 5, Titel = "Angular", Code = "Ang" });
+            _context.Cursussen.Add(new Cursus { Duur = 5, Titel = "Blazor", Code = "BLZ" });
+            _context.Cursussen.Add(new Cursus { Duur = 5, Titel = "Azure Fundamentals", Code = "AZF" });
             _context.SaveChanges();
 
             _context.CursusInstanties.Add(new CursusInstantie { StartDatum = new DateTime(2021, 3, 22), CursusId = 1 });

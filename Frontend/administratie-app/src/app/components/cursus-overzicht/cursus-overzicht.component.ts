@@ -14,7 +14,7 @@ export class CursusOverzichtComponent implements OnInit {
   cursussen: Cursus[];
 
   ngOnInit(): void {
-    this.httpClient.get<Cursus[]>('https://localhost:44371/api/cursus/alle').subscribe((cursus) => {
+    this.httpClient.get<Cursus[]>('https://localhost:44371/api/cursussen').subscribe((cursus) => {
       this.cursussen = cursus;
       this.cursussen = this.sortDates(this.cursussen);
     });

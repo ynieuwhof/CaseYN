@@ -1,20 +1,27 @@
-.importeren{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+html, body{
+    height: 100%;
 }
 
-.formulier{
-    max-width: 30%;
+.content {
     padding: 1%;
+    height: 100%;
+}
+
+
+.formulier{
+    margin-top: 10%;
 }
 
 input {
     margin-top: 1%;
-    margin-bottom: 1%;
+    margin-bottom: 4%;
 }
 
 .messages {
-    max-width: 30%;
-    padding: 1%;
+    margin-top: 2%;
+}
+
+.blok {
+    max-width: 25%;
+    height: 50%;
 }

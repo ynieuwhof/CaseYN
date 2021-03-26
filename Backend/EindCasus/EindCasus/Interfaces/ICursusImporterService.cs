@@ -9,7 +9,7 @@ namespace EindCasus.Interfaces
 {
     public interface ICursusImporterService
     {
-        ImportDetails AddCourse(string cursussen);
+        ImportFeedback AddCourse(string cursussen);
 
     }
 }

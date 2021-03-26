@@ -35,6 +35,7 @@ namespace EindCasus
             services.AddDbContext<CursusDbContext>(options =>
             options.UseSqlServer(
                 Configuration.GetConnectionString("CursusDbContext")));
+
             services.AddScoped<ICursusRepository, CursusRepository>();
             services.AddScoped<IImportCursusRepository, ImportCursusRepository>();
             services.AddScoped<ICursusImporterService, CursusImporterService>();
@@ -53,6 +54,7 @@ namespace EindCasus
                         .AllowAnyMethod()
                         .AllowCredentials()
                         .AllowAnyHeader());
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

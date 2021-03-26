@@ -31,7 +31,6 @@ export class PlanningImporterenComponent implements OnInit {
       this.result = [fileReader.result.toString()];
 
       this.httpClient.post("https://localhost:44371/api/import", this.result).subscribe((response) => {
-        console.log(response);
         this.aantalCursussen = response["toegevoegdeCursussen"];
         this.aantalInstanties = response["toegevoegdeInstanties"];
         this.aantalDuplicaten = response["aantalDuplicaten"];

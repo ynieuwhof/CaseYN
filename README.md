@@ -17,4 +17,4 @@ Frontend:
   - Het is handig om eerst de c#-applicatie te runnen anders ziet de frontend er een beetje leeg uit
  - Om de test te draaien voer je het command "ng test" uit
 
-Als het niet lukt of vragen hebt kan je mij mailen op eindcasus@yolandenieuwhof.nl
+Als het niet lukt of als je vragen hebt kan je mij mailen op eindcasus@yolandenieuwhof.nl

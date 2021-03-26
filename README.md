@@ -7,7 +7,6 @@ Backend:
     - Zorg ervoor dat indien je de naam hebt veranderd van de connectionstring deze ook overeenkomt met de naam die in de startup.cs file staat 
   - Build als eerst de solution zodat de benodigde nuget packages worden toegevoegd
   - Ga naar de package manager console en voer de command Update-Database uit
-    - Als dit een error oplevert voer dan de command Add-Migration uit en geef het een naam, voer daarna weer Update-Database uit. 
   - Run de solution 
     - Controleer of database is gemaakt en gevuld is met de seed data
   

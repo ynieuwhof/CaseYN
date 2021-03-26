@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EindCasus.Migrations
 {
     [DbContext(typeof(CursusDbContext))]
-    [Migration("20210326104529_Aanpassing")]
-    partial class Aanpassing
+    [Migration("20210326114731_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

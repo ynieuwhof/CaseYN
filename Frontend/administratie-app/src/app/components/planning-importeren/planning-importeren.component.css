@@ -1,3 +1,20 @@
-#error {
-    color: red;
+.importeren{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.formulier{
+    max-width: 30%;
+    padding: 1%;
+}
+
+input {
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.messages {
+    max-width: 30%;
+    padding: 1%;
 }

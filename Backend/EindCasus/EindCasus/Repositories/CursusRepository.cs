@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EindCasus.Interfaces;
+using EindCasus.DTO;
 
 namespace EindCasus.Repositories
 {

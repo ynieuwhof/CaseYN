@@ -22,31 +22,39 @@ export class PlanningImporterenComponent implements OnInit {
   showDuplicateMessage = false;
   errorMessage: string;
 
-  result: any;
-  resultArray: Array<string>;
+  result: Array<string>;
+
 
   handleFileUpload(){
     let fileReader = new FileReader();
     fileReader.onload = (e) => {
-      this.result = fileReader.result.toString();
-      this.resultArray = [this.result];
-     // this.result.pop();
-      console.log(this.result);
-      
-      this.httpClient.post("https://localhost:44371/api/import", this.resultArray).subscribe((response) => {
+      this.result = [fileReader.result.toString()];
+
+      this.httpClient.post("https://localhost:44371/api/import", this.result).subscribe((response) => {
         console.log(response);
         this.aantalCursussen = response["toegevoegdeCursussen"];
         this.aantalInstanties = response["toegevoegdeInstanties"];
         this.aantalDuplicaten = response["aantalDuplicaten"];
         this.errorMessage = response["errorMessage"];
-        if (this.aantalDuplicaten > 0)
-        {
-          this.showDuplicateMessage = true;
-        }
-        this.showMessage = true;
+        this.toggleMessages();    
       }) 
     }
     fileReader.readAsText(this.file);;
+  }
+
+  toggleMessages() {
+    if (this.aantalDuplicaten > 0) {
+      this.showDuplicateMessage = true;
+    }
+    else {
+      this.showDuplicateMessage = false;
+    }
+    if(this.aantalCursussen > 0 || this.aantalInstanties > 0) {
+      this.showMessage = true;
+    }
+    else {
+      this.showMessage = false;
+    }
   }
 
   file: any;

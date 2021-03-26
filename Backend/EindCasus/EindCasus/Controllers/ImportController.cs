@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using EindCasus.Interfaces;
 using EindCasus.Services;
+using EindCasus.DTO;
 
 namespace EindCasus.Controllers
 {

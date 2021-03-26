@@ -13,6 +13,5 @@ namespace EindCasus.Models
 
         public int CursusId { get; set; }
 
-        public ICollection<Cursist> Cursisten { get; set; }
     }
 }
